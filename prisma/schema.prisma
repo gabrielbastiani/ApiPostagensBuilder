@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// criar uma migration: yarn prisma migrate dev
+
+model User {
+  id       String  @id @default(uuid())
+  photo    String? @default("/images/avatar.png")
+  name     String  @unique @db.VarChar(75)
+  email    String  @unique @db.VarChar(80)
+  password String
+
+  authenticated Boolean @default(false)
+
+  created_at DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  posts         Post[]
+  postrespondes PostResponde[]
+
+  @@map("users")
+}
+
+model PasswordRecovery {
+  id    String @id @default(uuid())
+  email String
+
+  @@map("passwordRecoverys")
+}
+
+model Post {
+  id          String  @id @default(uuid())
+  description String?
+  like        String?
+
+  created_at DateTime? @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user         User?         @relation(fields: [name], references: [name])
+  name         String?
+  postresponde PostResponde? @relation(fields: [answer], references: [answer])
+  answer       String?
+
+  @@map("posts")
+}
+
+model PostResponde {
+  id     String  @id @default(uuid())
+  answer String? @unique
+  like   String?
+
+  created_at DateTime? @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user User?   @relation(fields: [name], references: [name])
+  name String?
+
+  posts Post[]
+
+  @@map("postrespondes")
+}
