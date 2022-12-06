@@ -1,15 +1,15 @@
 import prismaClient from "../../prisma";
 
 interface PostRequest{
-  postResponde_id: string;
+  postresponde_id: string;
 }
 
 class RemoveImgPostAnswerService{
-  async execute({ postResponde_id }: PostRequest){
+  async execute({ postresponde_id }: PostRequest){
 
     const imgAnswers = prismaClient.postResponde.findUnique({
       where:{
-        id: postResponde_id
+        id: postresponde_id
       }
     })
 

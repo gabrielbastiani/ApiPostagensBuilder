@@ -3,13 +3,13 @@ import { UpdateAnswerDescriptionService } from '../../services/answer/UpdateAnsw
 
 class UpdateAnswerDescriptionController {
    async handle(req: Request, res: Response) {
-      const postResponde_id = req.query.postResponde_id as string;
+      const postresponde_id = req.query.postresponde_id as string;
       const { answer } = req.body;
 
       const updateAnswerDescriptionService = new UpdateAnswerDescriptionService();
 
       const answers = await updateAnswerDescriptionService.execute({
-         postResponde_id,
+         postresponde_id,
          answer
       });
       return res.json(answers);

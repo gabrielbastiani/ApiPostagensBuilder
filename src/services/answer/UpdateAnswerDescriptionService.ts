@@ -1,15 +1,15 @@
 import prismaClient from '../../prisma';
 
 interface AnswerRequest {
-  postResponde_id: any;
+  postresponde_id: any;
   answer: string;
 }
 
 class UpdateAnswerDescriptionService {
-  async execute({ postResponde_id, answer }: AnswerRequest) {
+  async execute({ postresponde_id, answer }: AnswerRequest) {
     const postDescription = await prismaClient.postResponde.update({
       where: {
-        id: String(postResponde_id),
+        id: String(postresponde_id),
       },
       data: {
         answer: answer,

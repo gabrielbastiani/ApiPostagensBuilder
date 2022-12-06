@@ -6,13 +6,13 @@ import fs from 'fs';
 
 class UpdateImgAnswerAnswerController {
    async handle(req: Request, res: Response) {
-      const { postResponde_id } = req.body;
+      const { postresponde_id } = req.body;
 
       const removeImgAnswer = new RemoveImgPostAnswerService();
       const updateImgAnswerAnswerService = new UpdateImgAnswerAnswerService();
 
       const answerImgUpdate = await removeImgAnswer.execute({
-         postResponde_id,
+         postresponde_id,
       })
 
       fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'images' + '/' + answerImgUpdate.imgAnswer)
@@ -23,7 +23,7 @@ class UpdateImgAnswerAnswerController {
          const { originalname, filename: imgAnswer } = req.file;
 
          const answers = await updateImgAnswerAnswerService.execute({
-            postResponde_id,
+            postresponde_id,
             imgAnswer,
          });
          return res.json([answers, answerImgUpdate]);
