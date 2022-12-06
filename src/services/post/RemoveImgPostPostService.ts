@@ -6,8 +6,7 @@ interface PostRequest{
 
 class RemoveImgPostPostService{
   async execute({ post_id }: PostRequest){
-
-    const postImg = await prismaClient.post.findUnique({
+    const postImg = prismaClient.post.findUnique({
       where:{
         id: post_id
       }

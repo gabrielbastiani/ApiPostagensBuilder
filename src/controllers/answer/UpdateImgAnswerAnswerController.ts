@@ -6,16 +6,16 @@ import fs from 'fs';
 
 class UpdateImgAnswerAnswerController {
    async handle(req: Request, res: Response) {
-      const postResponde_id = req.query.postResponde_id as string;
+      const { postResponde_id } = req.body;
 
       const removeImgAnswer = new RemoveImgPostAnswerService();
       const updateImgAnswerAnswerService = new UpdateImgAnswerAnswerService();
 
-      const postImgPost = await removeImgAnswer.execute({
+      const answerImgUpdate = await removeImgAnswer.execute({
          postResponde_id,
-       })
-   
-       fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'imgblog' + '/' + postImgPost.imgAnswer)
+      })
+
+      fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'images' + '/' + answerImgUpdate.imgAnswer)
 
       if (!req.file) {
          throw new Error('error upload file')
@@ -26,7 +26,7 @@ class UpdateImgAnswerAnswerController {
             postResponde_id,
             imgAnswer,
          });
-         return res.json(answers);
+         return res.json([answers, answerImgUpdate]);
       }
    }
 }

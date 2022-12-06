@@ -15,7 +15,7 @@ class PhotoUpdateUserController {
       user_id,
     })
 
-    fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'imgblog' + '/' + photoUser.photo)
+    fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'images' + '/' + photoUser.photo)
 
     if (!req.file) {
       throw new Error('error upload file')

@@ -5,9 +5,9 @@ interface PostRequest {
   imgPost: string;
 }
 
-class UpdateImgPostPostService {
+class UploadImagePostService {
   async execute({ post_id, imgPost }: PostRequest) {
-    const postImg = await prismaClient.post.update({
+    const postImage = await prismaClient.post.update({
       where: {
         id: String(post_id),
       },
@@ -19,8 +19,8 @@ class UpdateImgPostPostService {
       }
     })
 
-    return postImg;
+    return postImage;
   }
 }
 
-export { UpdateImgPostPostService }
+export { UploadImagePostService }

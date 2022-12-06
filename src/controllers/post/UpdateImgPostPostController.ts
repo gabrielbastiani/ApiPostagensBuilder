@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { UpdateImgPostPostService } from '../../services/post/UpdateImgPostPostService';
-import { RemoveImgPostPostService } from '../../services/post/RemoveImgPostPostService'
+import { RemoveImgPostPostService } from '../../services/post/RemoveImgPostPostService';
 import fs from 'fs';
 
 
 class UpdateImgPostPostController {
    async handle(req: Request, res: Response) {
-      const post_id = req.query.post_id as string;
+      const {post_id} = req.body;
 
       const removeImgPost = new RemoveImgPostPostService();
       const updateImgPostPostService = new UpdateImgPostPostService();
@@ -15,7 +15,7 @@ class UpdateImgPostPostController {
          post_id,
        })
    
-       fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'imgblog' + '/' + postImgPost.imgPost)
+       fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'images' + '/' + postImgPost.imgPost)
 
       if (!req.file) {
          throw new Error('error upload file')
@@ -26,7 +26,7 @@ class UpdateImgPostPostController {
             post_id,
             imgPost,
          });
-         return res.json(post);
+         return res.json([post, postImgPost]);
       }
    }
 }

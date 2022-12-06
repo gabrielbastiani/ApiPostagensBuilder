@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
-    "photo" TEXT DEFAULT '/images/avatar.png',
+    "photo" TEXT DEFAULT '',
     "name" VARCHAR(75) NOT NULL,
     "email" VARCHAR(80) NOT NULL,
     "password" TEXT NOT NULL,
@@ -29,7 +29,6 @@ CREATE TABLE "posts" (
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT,
-    "answer" TEXT,
 
     CONSTRAINT "posts_pkey" PRIMARY KEY ("id")
 );
@@ -43,6 +42,7 @@ CREATE TABLE "postrespondes" (
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT,
+    "post_id" TEXT,
 
     CONSTRAINT "postrespondes_pkey" PRIMARY KEY ("id")
 );
@@ -60,7 +60,7 @@ CREATE UNIQUE INDEX "postrespondes_answer_key" ON "postrespondes"("answer");
 ALTER TABLE "posts" ADD CONSTRAINT "posts_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "posts" ADD CONSTRAINT "posts_answer_fkey" FOREIGN KEY ("answer") REFERENCES "postrespondes"("answer") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_post_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id") ON DELETE SET NULL ON UPDATE CASCADE;

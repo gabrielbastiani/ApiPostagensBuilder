@@ -2,18 +2,18 @@ import prismaClient from "../../prisma";
 
 interface PostRequest {
    description: string;
-   imgPost: string;
    like: string;
+   name: string;
 }
 
 class CreatePostService {
-   async execute({ description, imgPost, like }: PostRequest) {
+   async execute({ description, like, name }: PostRequest) {
 
       const post = await prismaClient.post.create({
          data: {
             description: description,
-            imgPost: imgPost,
             like: like,
+            name: name
          }
       })
 
