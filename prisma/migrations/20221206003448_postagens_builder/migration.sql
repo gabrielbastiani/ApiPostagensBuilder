@@ -24,6 +24,7 @@ CREATE TABLE "passwordRecoverys" (
 CREATE TABLE "posts" (
     "id" TEXT NOT NULL,
     "description" TEXT,
+    "imgPost" TEXT DEFAULT '',
     "like" TEXT,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE "posts" (
 CREATE TABLE "postrespondes" (
     "id" TEXT NOT NULL,
     "answer" TEXT,
+    "imgAnswer" TEXT DEFAULT '',
     "like" TEXT,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
