@@ -17,6 +17,7 @@ import { UpdatePostDescriptionController } from './controllers/post/UpdatePostDe
 import { UpdateImgPostPostController } from './controllers/post/UpdateImgPostPostController';
 import { UploadImagePostController } from './controllers/post/UploadImagePostController';
 import { LikePostController } from './controllers/post/LikePostController';
+import { ListPostByUserController } from './controllers/post/ListPostByUserController';
 
 //ANSWER
 import { CreateAnswerController } from './controllers/answer/CreateAnswerController';
@@ -49,6 +50,7 @@ router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionContr
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
 router.put('/likeMore', new LikePostController().handle);
+router.get('/postsUser', new ListPostByUserController().handle);
 
 //ANSWER
 router.post('/answer', isAuthenticated, new CreateAnswerController().handle);
