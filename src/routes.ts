@@ -16,12 +16,14 @@ import { CreatePostController } from './controllers/post/CreatePostController';
 import { UpdatePostDescriptionController } from './controllers/post/UpdatePostDescriptionController';
 import { UpdateImgPostPostController } from './controllers/post/UpdateImgPostPostController';
 import { UploadImagePostController } from './controllers/post/UploadImagePostController';
+import { LikePostController } from './controllers/post/LikePostController';
 
 //ANSWER
 import { CreateAnswerController } from './controllers/answer/CreateAnswerController';
 import { UpdateAnswerDescriptionController } from './controllers/answer/UpdateAnswerDescriptionController';
 import { UpdateImgAnswerAnswerController } from './controllers/answer/UpdateImgAnswerAnswerController';
 import { UploadImgAnswerAnswerController } from './controllers/answer/UploadImgAnswerAnswerController';
+import { LikeAnswerController } from './controllers/answer/LikeAnswerController';
 
 
 
@@ -46,12 +48,14 @@ router.post('/post', isAuthenticated, new CreatePostController().handle);
 router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionController().handle);
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
+router.put('/likeMore', new LikePostController().handle);
 
 //ANSWER
 router.post('/answer', isAuthenticated, new CreateAnswerController().handle);
 router.put('/answerDesc', isAuthenticated, new UpdateAnswerDescriptionController().handle);
 router.put('/uploadImg', isAuthenticated, upload.single('file'), new UploadImgAnswerAnswerController().handle);
 router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAnswerAnswerController().handle);
+router.put('/likeMoreAnswer', new LikeAnswerController().handle);
 
 
 export { router };

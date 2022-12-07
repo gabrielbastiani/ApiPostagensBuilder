@@ -41,7 +41,7 @@ model Post {
   id          String  @id @default(uuid())
   description String?
   imgPost     String? @default("")
-  like        String?
+  like        Int?    @default(0)
 
   created_at DateTime? @default(now())
   updatedAt  DateTime  @updatedAt
@@ -58,7 +58,7 @@ model PostResponde {
   id        String  @id @default(uuid())
   answer    String? @unique
   imgAnswer String? @default("")
-  like      String?
+  like      Int?    @default(0)
 
   created_at DateTime? @default(now())
   updatedAt  DateTime  @updatedAt
