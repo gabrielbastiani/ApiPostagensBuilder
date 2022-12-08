@@ -56,7 +56,7 @@ router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionContr
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
 router.put('/likeMore', new LikePostController().handle);
-router.get('/postsUser', new ListPostByUserController().handle);
+router.get('/postsUser', new ListPostByUserController().handle);;
 
 //ANSWER
 router.post('/answer', isAuthenticated, new CreateAnswerController().handle);
