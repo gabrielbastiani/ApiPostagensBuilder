@@ -55,7 +55,7 @@ class CreateUserService {
     })
 
     await transporter.sendMail({
-      from: "'Postagens - Builder Seu Negocio Online' <contato@builderseunegocioonline.com.br>",
+      from: "Postagens - Builder Seu Negocio Online <contato@builderseunegocioonline.com.br>",
       to: user.email,
       subject: "Confirme seu cadastro de usuario na rede social da Builder Seu Negócio Online",
       html: `<div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
@@ -64,7 +64,7 @@ class CreateUserService {
             
             <article>
                 <p>Olá, ${user.name}!</p>
-                <p><a href="http://localhost:3333/authenticated?user_id=${user.id}">CLIQUE AQUI</a>, para confirmar sua conta junto a rede social, e poder acessa-la com os dados que cadastrou anteriormente.</p>
+                <p><a href="http://localhost:3000/userAuthenticatedPostagens?user_id=${user.id}">CLIQUE AQUI</a>, para confirmar sua conta junto a rede social, e poder acessa-la com os dados que cadastrou anteriormente.</p>
             </article>
             
             <div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
