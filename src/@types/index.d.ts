@@ -3,5 +3,6 @@ declare namespace Express{
       user_id: string;
       post_id: string;
       postresponde_id: string;
+      doclikespost_id: string;
     }
   }

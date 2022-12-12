@@ -6,21 +6,21 @@ interface PostRequest {
 }
 
 
-class LikePostService {
+class DeslikePostService {
   async execute({ post_id, like }: PostRequest) {
-    const likePost = await prismaClient.post.update({
+    const deslikePost = await prismaClient.post.update({
       where: {
         id: String(post_id),
       },
       data: {
         like: {
-          increment: 1,
+          decrement: 1,
         }
       }
     })
 
-    return likePost;
+    return deslikePost;
   }
 }
 
-export { LikePostService }
+export { DeslikePostService }

@@ -3,8 +3,7 @@ import { LikePostService } from '../../services/post/LikePostService';
 
 class LikePostController {
    async handle(req: Request, res: Response) {
-      const post_id = req.query.post_id as string;
-      const { like } = req.body;
+      const { post_id, like } = req.body;
 
       const likePostService = new LikePostService();
 

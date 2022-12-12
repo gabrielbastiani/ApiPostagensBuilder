@@ -14,6 +14,11 @@ class CreatePostService {
             description: description,
             like: like,
             name: name
+         },
+         select: {
+            description: true,
+            like: true,
+            imgPost: true
          }
       })
 

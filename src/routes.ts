@@ -20,7 +20,15 @@ import { UpdatePostDescriptionController } from './controllers/post/UpdatePostDe
 import { UpdateImgPostPostController } from './controllers/post/UpdateImgPostPostController';
 import { UploadImagePostController } from './controllers/post/UploadImagePostController';
 import { LikePostController } from './controllers/post/LikePostController';
+import { DeslikePostController } from './controllers/post/DeslikePostController';
 import { ListPostByUserController } from './controllers/post/ListPostByUserController';
+import { ListAllPostsController } from './controllers/post/ListAllPostsController';
+
+//LIKES POST
+import { LikesDocIdController } from './controllers/docLikes/LikesDocIdController';
+import { DeleteLikesDocIdController } from './controllers/docLikes/DeleteLikesDocIdController';
+import { FindFirstDocIdController } from './controllers/docLikes/FindFirstDocIdController';
+import { AllDocIdController } from './controllers/docLikes/AllDocIdController';
 
 //ANSWER
 import { CreateAnswerController } from './controllers/answer/CreateAnswerController';
@@ -55,8 +63,16 @@ router.post('/post', isAuthenticated, new CreatePostController().handle);
 router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionController().handle);
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
-router.put('/likeMore', new LikePostController().handle);
+router.put('/like', isAuthenticated, new LikePostController().handle);
+router.put('/deslike', isAuthenticated, new DeslikePostController().handle);
 router.get('/postsUser', new ListPostByUserController().handle);
+router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
+
+//LIKES POSTS
+router.post('/docId', isAuthenticated, new LikesDocIdController().handle);
+router.delete('/deleteDoc', isAuthenticated, new DeleteLikesDocIdController().handle);
+router.get('/docId', isAuthenticated, new FindFirstDocIdController().handle);
+router.get('/docIdAll', isAuthenticated, new AllDocIdController().handle);
 
 //ANSWER
 router.post('/answer', isAuthenticated, new CreateAnswerController().handle);

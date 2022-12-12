@@ -24,8 +24,10 @@ model User {
   created_at DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  posts         Post[]
-  postrespondes PostResponde[]
+  posts             Post[]
+  doclikesposts     DocLikesPost[]
+  postrespondes     PostResponde[]
+  doclikesrespondes DocLikesResponde[]
 
   @@map("users")
 }
@@ -54,6 +56,16 @@ model Post {
   @@map("posts")
 }
 
+model DocLikesPost {
+  id    String  @id @default(uuid())
+  docId String?
+
+  user    User?   @relation(fields: [user_id], references: [id])
+  user_id String?
+
+  @@map("doclikesposts")
+}
+
 model PostResponde {
   id        String  @id @default(uuid())
   answer    String? @unique
@@ -70,4 +82,14 @@ model PostResponde {
   post_id String?
 
   @@map("postrespondes")
+}
+
+model DocLikesResponde {
+  id    String  @id @default(uuid())
+  docId String?
+
+  user    User?   @relation(fields: [user_id], references: [id])
+  user_id String?
+
+  @@map("doclikesrespondes")
 }

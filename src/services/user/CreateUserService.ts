@@ -82,7 +82,7 @@ class CreateUserService {
             
             <article>
                 <p>Olá!</p>
-                <p>Um usúario de nome <b>${user.name}</b> se cadastrou no blog.</p>
+                <p>Um usúario de nome <b>${user.name}</b> se cadastrou na rede social.</p>
             </article>
             
             <div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
