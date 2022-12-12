@@ -70,7 +70,7 @@ router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
 
 //LIKES POSTS
 router.post('/docId', isAuthenticated, new LikesDocIdController().handle);
-router.delete('/deleteDoc', isAuthenticated, new DeleteLikesDocIdController().handle);
+router.delete('/deleteDoc', new DeleteLikesDocIdController().handle);
 router.get('/docId', isAuthenticated, new FindFirstDocIdController().handle);
 router.get('/docIdAll', isAuthenticated, new AllDocIdController().handle);
 
