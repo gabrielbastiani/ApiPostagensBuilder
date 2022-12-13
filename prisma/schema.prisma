@@ -51,7 +51,8 @@ model Post {
   user User?   @relation(fields: [name], references: [name])
   name String?
 
-  postresponde PostResponde[]
+  postresponde  PostResponde[]
+  doclikesposts DocLikesPost[]
 
   @@map("posts")
 }
@@ -62,6 +63,8 @@ model DocLikesPost {
 
   user    User?   @relation(fields: [user_id], references: [id])
   user_id String?
+  post    Post?   @relation(fields: [post_id], references: [id])
+  post_id String?
 
   @@map("doclikesposts")
 }
@@ -75,21 +78,24 @@ model PostResponde {
   created_at DateTime? @default(now())
   updatedAt  DateTime  @updatedAt
 
-  user User?   @relation(fields: [name], references: [name])
-  name String?
-
+  user    User?   @relation(fields: [name], references: [name])
+  name    String?
   post    Post?   @relation(fields: [post_id], references: [id])
   post_id String?
+
+  doclikesrespondes DocLikesResponde[]
 
   @@map("postrespondes")
 }
 
 model DocLikesResponde {
-  id    String  @id @default(uuid())
-  docId String?
+  id        String  @id @default(uuid())
+  docIdResp String?
 
-  user    User?   @relation(fields: [user_id], references: [id])
-  user_id String?
+  user            User?         @relation(fields: [user_id], references: [id])
+  user_id         String?
+  postrespondes   PostResponde? @relation(fields: [postresponde_id], references: [id])
+  postresponde_id String?
 
   @@map("doclikesrespondes")
 }

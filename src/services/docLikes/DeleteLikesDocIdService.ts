@@ -7,7 +7,7 @@ interface DeleteLikesdocLikesId {
 class DeleteLikesDocIdService {
     async execute({ doclikespost_id }: DeleteLikesdocLikesId) {
 
-        const docLikes = await prismaClient.docLikesPost.deleteMany({
+        const docLikes = await prismaClient.docLikesPost.delete({
             where: {
                 id: doclikespost_id,
             }

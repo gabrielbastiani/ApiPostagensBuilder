@@ -38,6 +38,7 @@ CREATE TABLE "doclikesposts" (
     "id" TEXT NOT NULL,
     "docId" TEXT,
     "user_id" TEXT,
+    "post_id" TEXT,
 
     CONSTRAINT "doclikesposts_pkey" PRIMARY KEY ("id")
 );
@@ -59,8 +60,9 @@ CREATE TABLE "postrespondes" (
 -- CreateTable
 CREATE TABLE "doclikesrespondes" (
     "id" TEXT NOT NULL,
-    "docId" TEXT,
+    "docIdResp" TEXT,
     "user_id" TEXT,
+    "postresponde_id" TEXT,
 
     CONSTRAINT "doclikesrespondes_pkey" PRIMARY KEY ("id")
 );
@@ -81,6 +83,9 @@ ALTER TABLE "posts" ADD CONSTRAINT "posts_name_fkey" FOREIGN KEY ("name") REFERE
 ALTER TABLE "doclikesposts" ADD CONSTRAINT "doclikesposts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "doclikesposts" ADD CONSTRAINT "doclikesposts_post_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -88,3 +93,6 @@ ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_post_id_fkey" FOREIGN 
 
 -- AddForeignKey
 ALTER TABLE "doclikesrespondes" ADD CONSTRAINT "doclikesrespondes_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "doclikesrespondes" ADD CONSTRAINT "doclikesrespondes_postresponde_id_fkey" FOREIGN KEY ("postresponde_id") REFERENCES "postrespondes"("id") ON DELETE SET NULL ON UPDATE CASCADE;
