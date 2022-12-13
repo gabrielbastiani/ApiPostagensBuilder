@@ -35,12 +35,9 @@ CREATE TABLE "posts" (
 
 -- CreateTable
 CREATE TABLE "doclikesposts" (
-    "id" TEXT NOT NULL,
-    "docId" TEXT,
+    "docId" TEXT NOT NULL,
     "user_id" TEXT,
-    "post_id" TEXT,
-
-    CONSTRAINT "doclikesposts_pkey" PRIMARY KEY ("id")
+    "post_id" TEXT
 );
 
 -- CreateTable
@@ -59,12 +56,9 @@ CREATE TABLE "postrespondes" (
 
 -- CreateTable
 CREATE TABLE "doclikesrespondes" (
-    "id" TEXT NOT NULL,
-    "docIdResp" TEXT,
+    "docIdResponde" TEXT NOT NULL,
     "user_id" TEXT,
-    "postresponde_id" TEXT,
-
-    CONSTRAINT "doclikesrespondes_pkey" PRIMARY KEY ("id")
+    "postresponde_id" TEXT
 );
 
 -- CreateIndex
@@ -74,7 +68,13 @@ CREATE UNIQUE INDEX "users_name_key" ON "users"("name");
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "doclikesposts_docId_key" ON "doclikesposts"("docId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "postrespondes_answer_key" ON "postrespondes"("answer");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "doclikesrespondes_docIdResponde_key" ON "doclikesrespondes"("docIdResponde");
 
 -- AddForeignKey
 ALTER TABLE "posts" ADD CONSTRAINT "posts_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;

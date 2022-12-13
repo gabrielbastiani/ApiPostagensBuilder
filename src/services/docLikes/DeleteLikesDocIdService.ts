@@ -1,15 +1,15 @@
 import prismaClient from "../../prisma";
 
 interface DeleteLikesdocLikesId {
-    doclikespost_id: string;
+    docId: string;
 }
 
 class DeleteLikesDocIdService {
-    async execute({ doclikespost_id }: DeleteLikesdocLikesId) {
+    async execute({ docId }: DeleteLikesdocLikesId) {
 
         const docLikes = await prismaClient.docLikesPost.delete({
             where: {
-                id: doclikespost_id,
+                docId: docId,
             }
         })
 

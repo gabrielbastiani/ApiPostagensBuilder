@@ -3,9 +3,12 @@ import { FindFirstDocIdService } from "../../services/docLikes/FindFirstDocIdSer
 
 class FindFirstDocIdController {
    async handle(req: Request, res: Response){
+      const {docId} = req.body;
       const allDocIdService = new FindFirstDocIdService();
 
-      const allDocId = await allDocIdService.execute();
+      const allDocId = await allDocIdService.execute({
+         docId
+      });
 
       return res.json(allDocId);
       
