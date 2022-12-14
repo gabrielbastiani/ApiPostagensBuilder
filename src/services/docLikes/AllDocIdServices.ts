@@ -5,6 +5,8 @@ class AllDocIdServices {
       const allDocId = await prismaClient.docLikesPost.findMany({
          select: {
             docId: true,
+            post_id: true,
+            user_id: true
          }
       })
 

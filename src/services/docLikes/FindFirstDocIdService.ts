@@ -8,10 +8,12 @@ class FindFirstDocIdService {
    async execute({docId}: DocIdProps) {
       const allDocId = await prismaClient.docLikesPost.findUnique({
          where: {
-            docId: String(docId),
+            docId: docId,
          },
          select: {
             docId: true,
+            post_id: true,
+            user_id: true
          }
       })
 

@@ -35,9 +35,11 @@ CREATE TABLE "posts" (
 
 -- CreateTable
 CREATE TABLE "doclikesposts" (
-    "docId" TEXT NOT NULL,
+    "docId" TEXT NOT NULL DEFAULT '',
     "user_id" TEXT,
-    "post_id" TEXT
+    "post_id" TEXT,
+
+    CONSTRAINT "doclikesposts_pkey" PRIMARY KEY ("docId")
 );
 
 -- CreateTable
@@ -56,9 +58,11 @@ CREATE TABLE "postrespondes" (
 
 -- CreateTable
 CREATE TABLE "doclikesrespondes" (
-    "docIdResponde" TEXT NOT NULL,
+    "docIdResponde" TEXT NOT NULL DEFAULT '',
     "user_id" TEXT,
-    "postresponde_id" TEXT
+    "postresponde_id" TEXT,
+
+    CONSTRAINT "doclikesrespondes_pkey" PRIMARY KEY ("docIdResponde")
 );
 
 -- CreateIndex
@@ -68,31 +72,13 @@ CREATE UNIQUE INDEX "users_name_key" ON "users"("name");
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "doclikesposts_docId_key" ON "doclikesposts"("docId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "postrespondes_answer_key" ON "postrespondes"("answer");
-
--- CreateIndex
-CREATE UNIQUE INDEX "doclikesrespondes_docIdResponde_key" ON "doclikesrespondes"("docIdResponde");
 
 -- AddForeignKey
 ALTER TABLE "posts" ADD CONSTRAINT "posts_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "doclikesposts" ADD CONSTRAINT "doclikesposts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "doclikesposts" ADD CONSTRAINT "doclikesposts_post_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_name_fkey" FOREIGN KEY ("name") REFERENCES "users"("name") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "postrespondes" ADD CONSTRAINT "postrespondes_post_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "doclikesrespondes" ADD CONSTRAINT "doclikesrespondes_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "doclikesrespondes" ADD CONSTRAINT "doclikesrespondes_postresponde_id_fkey" FOREIGN KEY ("postresponde_id") REFERENCES "postrespondes"("id") ON DELETE SET NULL ON UPDATE CASCADE;
