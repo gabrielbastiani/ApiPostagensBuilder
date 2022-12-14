@@ -3,7 +3,7 @@ import { DeleteLikesDocIdService } from "../../services/docLikes/DeleteLikesDocI
 
 class DeleteLikesDocIdController {
     async handle(req: Request, res: Response) {
-        const {docId} = req.body;
+        const {docId} = req.query;
 
         const deleteLikesDocIdService = new DeleteLikesDocIdService();
 

@@ -1,14 +1,10 @@
 import prismaClient from "../../prisma";
 
-interface DocIdProps {
-   docId: string;
-}
-
 class FindFirstDocIdService {
-   async execute({docId}: DocIdProps) {
+   async execute({docId}) {
       const allDocId = await prismaClient.docLikesPost.findUnique({
          where: {
-            docId: docId,
+            docId
          },
          select: {
             docId: true,
@@ -17,7 +13,11 @@ class FindFirstDocIdService {
          }
       })
 
-      return allDocId;
+      const data = {
+         allDocId
+      }
+
+      return data;
    }
 }
 
