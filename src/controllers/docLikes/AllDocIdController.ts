@@ -3,6 +3,7 @@ import { AllDocIdServices } from "../../services/docLikes/AllDocIdServices";
 
 class AllDocIdController {
    async handle(req: Request, res: Response){
+      
       const allDocIdService = new AllDocIdServices();
 
       const allDocId = await allDocIdService.execute();

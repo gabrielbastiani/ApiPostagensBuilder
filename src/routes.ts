@@ -27,7 +27,7 @@ import { ListAllPostsController } from './controllers/post/ListAllPostsControlle
 //LIKES POST
 import { LikesDocIdController } from './controllers/docLikes/LikesDocIdController';
 import { DeleteLikesDocIdController } from './controllers/docLikes/DeleteLikesDocIdController';
-import { FindFirstDocIdController } from './controllers/docLikes/FindFirstDocIdController';
+import { FindUniqueDocIdController } from './controllers/docLikes/FindUniqueDocIdController';
 import { AllDocIdController } from './controllers/docLikes/AllDocIdController';
 
 //ANSWER
@@ -71,7 +71,7 @@ router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
 //LIKES POSTS
 router.post('/docId', isAuthenticated, new LikesDocIdController().handle);
 router.delete('/deleteDoc', new DeleteLikesDocIdController().handle);
-router.get('/docIdFind', isAuthenticated, new FindFirstDocIdController().handle);
+router.get('/docIdFind', isAuthenticated, new FindUniqueDocIdController().handle);
 router.get('/docIdAll', isAuthenticated, new AllDocIdController().handle);
 
 //ANSWER
