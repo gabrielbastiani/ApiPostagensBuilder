@@ -9,7 +9,7 @@ class ListPostByUserController {
         const { name } = req.query;
 
         const post = await listPostByUserService.execute({
-            name: name
+            name
         });
 
         return res.json(post);

@@ -65,7 +65,7 @@ router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateI
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
 router.put('/like', isAuthenticated, new LikePostController().handle);
 router.put('/deslike', isAuthenticated, new DeslikePostController().handle);
-router.get('/postsUser', new ListPostByUserController().handle);
+router.get('/postsUser', isAuthenticated, new ListPostByUserController().handle);
 router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
 
 //LIKES POSTS
