@@ -12,9 +12,9 @@ class ListPostByUserService {
             },
             select: {
                 name: true,
-                description: true,
-                created_at: true,
                 imgPost: true,
+                created_at: true,
+                description: true,
                 like: true,
                 postresponde: true
             },
