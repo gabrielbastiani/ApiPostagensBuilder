@@ -10,6 +10,7 @@ import { UpdateUserNameController } from './controllers/user/UpdateUserNameContr
 import { UpdateUserEmailController } from './controllers/user/UpdateUserEmailController';
 import { UploadPhotoUserController } from './controllers/user/UploadPhotoUserController';
 import { PhotoUpdateUserController } from './controllers/user/PhotoUpdateUserController';
+import { AvatarUserController } from './controllers/user/AvatarUserController';
 import { EmailPasswordController } from './controllers/user/PasswordRecovery/EmailPasswordController';
 import { RecoveryPasswordController } from './controllers/user/PasswordRecovery/RecoveryPasswordController';
 import { AuthenticatedEmailUserController } from './controllers/user/AuthenticatedEmailUserController';
@@ -54,6 +55,7 @@ router.put('/nameUpdate', isAuthenticated, new UpdateUserNameController().handle
 router.put('/emailUpdate', isAuthenticated, new UpdateUserEmailController().handle);
 router.put('/photoUser', isAuthenticated, upload.single('file'), new UploadPhotoUserController().handle);
 router.put('/photoUserUpdate', isAuthenticated, upload.single('file'), new PhotoUpdateUserController().handle);
+router.get('/userPhoto', isAuthenticated, new AvatarUserController().handle);
 router.post('/recover', new EmailPasswordController().handle);
 router.put('/recoverPassword', new RecoveryPasswordController().handle);
 router.put('/authenticated', new AuthenticatedEmailUserController().handle);
