@@ -4,7 +4,7 @@ import { UploadPhotoUserService } from '../../services/user/UploadPhotoUserServi
 
 class UploadPhotoUserController {
   async handle(req: Request, res: Response) {
-    const { user_id } = req.body;
+    const {user_id} = req.query;
 
     const updateUserService = new UploadPhotoUserService();
 
