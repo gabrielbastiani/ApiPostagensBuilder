@@ -11,6 +11,7 @@ class ListPostByUserService {
                 name
             },
             select: {
+                id: true,
                 name: true,
                 imgPost: true,
                 created_at: true,
