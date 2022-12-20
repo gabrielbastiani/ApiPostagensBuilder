@@ -61,7 +61,7 @@ router.put('/recoverPassword', new RecoveryPasswordController().handle);
 router.put('/authenticated', new AuthenticatedEmailUserController().handle);
 
 //POST
-router.post('/post', isAuthenticated, new CreatePostController().handle);
+router.post('/post', isAuthenticated, upload.single('file'), new CreatePostController().handle);
 router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionController().handle);
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
