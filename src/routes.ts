@@ -77,7 +77,7 @@ router.get('/docIdFind', isAuthenticated, new FindUniqueDocIdController().handle
 router.get('/docIdAll', isAuthenticated, new AllDocIdController().handle);
 
 //ANSWER
-router.post('/answer', isAuthenticated, new CreateAnswerController().handle);
+router.post('/answer', isAuthenticated, upload.single('file'), new CreateAnswerController().handle);
 router.put('/answerDesc', isAuthenticated, new UpdateAnswerDescriptionController().handle);
 router.put('/uploadImg', isAuthenticated, upload.single('file'), new UploadImgAnswerAnswerController().handle);
 router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAnswerAnswerController().handle);
