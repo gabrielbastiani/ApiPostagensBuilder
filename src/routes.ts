@@ -17,6 +17,7 @@ import { AuthenticatedEmailUserController } from './controllers/user/Authenticat
 
 //POST
 import { CreatePostController } from './controllers/post/CreatePostController';
+import { TextCreatePostController } from './controllers/post/TextCreatePostController';
 import { UpdatePostDescriptionController } from './controllers/post/UpdatePostDescriptionController';
 import { UpdateImgPostPostController } from './controllers/post/UpdateImgPostPostController';
 import { UploadImagePostController } from './controllers/post/UploadImagePostController';
@@ -33,6 +34,7 @@ import { AllDocIdController } from './controllers/docLikes/AllDocIdController';
 
 //ANSWER
 import { CreateAnswerController } from './controllers/answer/CreateAnswerController';
+import { TextCreateAnswerController } from './controllers/answer/TextCreateAnswerController';
 import { UpdateAnswerDescriptionController } from './controllers/answer/UpdateAnswerDescriptionController';
 import { UpdateImgAnswerAnswerController } from './controllers/answer/UpdateImgAnswerAnswerController';
 import { UploadImgAnswerAnswerController } from './controllers/answer/UploadImgAnswerAnswerController';
@@ -62,6 +64,7 @@ router.put('/authenticated', new AuthenticatedEmailUserController().handle);
 
 //POST
 router.post('/post', isAuthenticated, upload.single('file'), new CreatePostController().handle);
+router.post('/postText', isAuthenticated, new TextCreatePostController().handle);
 router.put('/descriptionUpdate', isAuthenticated, new UpdatePostDescriptionController().handle);
 router.put('/imgPostUpdate', isAuthenticated, upload.single('file'), new UpdateImgPostPostController().handle);
 router.put('/image', isAuthenticated, upload.single('file'), new UploadImagePostController().handle);
@@ -78,6 +81,7 @@ router.get('/docIdAll', isAuthenticated, new AllDocIdController().handle);
 
 //ANSWER
 router.post('/answer', isAuthenticated, upload.single('file'), new CreateAnswerController().handle);
+router.post('/postAnswer', isAuthenticated, new TextCreateAnswerController().handle);
 router.put('/answerDesc', isAuthenticated, new UpdateAnswerDescriptionController().handle);
 router.put('/uploadImg', isAuthenticated, upload.single('file'), new UploadImgAnswerAnswerController().handle);
 router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAnswerAnswerController().handle);

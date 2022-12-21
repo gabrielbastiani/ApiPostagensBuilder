@@ -11,17 +11,18 @@ class CreatePostController {
          throw new Error("error upload file")
       } else {
 
-      const { originalname, filename: imgPost } = req.file;
+         const { originalname, filename: imgPost } = req.file;
 
-      const post = await createPostService.execute({
-         description,
-         like,
-         name,
-         imgPost
-      })
-      return res.json(post)
+         const post = await createPostService.execute({
+            description,
+            like,
+            name,
+            imgPost
+         })
 
-   }
+         return res.json(post);
+
+      }
 
    }
 }
