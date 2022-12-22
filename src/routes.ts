@@ -40,6 +40,7 @@ import { UpdateImgAnswerAnswerController } from './controllers/answer/UpdateImgA
 import { UploadImgAnswerAnswerController } from './controllers/answer/UploadImgAnswerAnswerController';
 import { LikeAnswerController } from './controllers/answer/LikeAnswerController';
 import { DeslikeAnswerController } from './controllers/answer/DeslikeAnswerController';
+import { AllAnswersController } from './controllers/answer/AllAnswersController';
 
 //LIKES ANSWER
 import { LikesDocIdAnswersController } from './controllers/docLikesAnswers/LikesDocIdAnswersController';
@@ -94,6 +95,7 @@ router.put('/uploadImg', isAuthenticated, upload.single('file'), new UploadImgAn
 router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAnswerAnswerController().handle);
 router.put('/likeMoreAnswer', isAuthenticated, new LikeAnswerController().handle);
 router.put('/deslikeAnswer', isAuthenticated, new DeslikeAnswerController().handle);
+router.get('/allAnswers', isAuthenticated, new AllAnswersController().handle);
 
 //LIKES ANSWERS
 router.post('/docIdAllAnswer', isAuthenticated, new AllDocIdAnswersController().handle);
