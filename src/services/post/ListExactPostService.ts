@@ -1,11 +1,17 @@
 import prismaClient from '../../prisma';
 
+interface PostRequest {
+    name: string;
+}
 
 class ListExactPostService {
-    async execute({ name }) {
+    async execute({ name }: PostRequest) {
         const ExactPost = await prismaClient.post.findUnique({
             where: {
-                name
+                name,
+            },
+            select: {
+                name: true
             }
         })
         return ExactPost;
