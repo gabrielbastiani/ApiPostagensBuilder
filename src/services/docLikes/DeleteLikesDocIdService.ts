@@ -10,10 +10,6 @@ class DeleteLikesDocIdService {
             }
         })
 
-        const data = {
-            docLikes
-        }
-
         return docLikes;
     }
 

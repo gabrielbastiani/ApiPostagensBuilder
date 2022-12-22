@@ -39,6 +39,13 @@ import { UpdateAnswerDescriptionController } from './controllers/answer/UpdateAn
 import { UpdateImgAnswerAnswerController } from './controllers/answer/UpdateImgAnswerAnswerController';
 import { UploadImgAnswerAnswerController } from './controllers/answer/UploadImgAnswerAnswerController';
 import { LikeAnswerController } from './controllers/answer/LikeAnswerController';
+import { DeslikeAnswerController } from './controllers/answer/DeslikeAnswerController';
+
+//LIKES ANSWER
+import { LikesDocIdAnswersController } from './controllers/docLikesAnswers/LikesDocIdAnswersController';
+import { DeleteLikesDocIdAnswersController } from './controllers/docLikesAnswers/DeleteLikesDocIdAnswersController';
+import { FindUniqueDocIdAnswersController } from './controllers/docLikesAnswers/FindUniqueDocIdAnswersController';
+import { AllDocIdAnswersController } from './controllers/docLikesAnswers/AllDocIdAnswersController';
 
 
 
@@ -85,7 +92,15 @@ router.post('/postAnswer', isAuthenticated, new TextCreateAnswerController().han
 router.put('/answerDesc', isAuthenticated, new UpdateAnswerDescriptionController().handle);
 router.put('/uploadImg', isAuthenticated, upload.single('file'), new UploadImgAnswerAnswerController().handle);
 router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAnswerAnswerController().handle);
-router.put('/likeMoreAnswer', new LikeAnswerController().handle);
+router.put('/likeMoreAnswer', isAuthenticated, new LikeAnswerController().handle);
+router.put('/deslikeAnswer', isAuthenticated, new DeslikeAnswerController().handle);
+
+//LIKES ANSWERS
+router.post('/docIdAllAnswer', isAuthenticated, new AllDocIdAnswersController().handle);
+router.delete('/deleteDocAnswer', isAuthenticated, new DeleteLikesDocIdAnswersController().handle);
+router.get('/docIdFindAnswer', isAuthenticated, new FindUniqueDocIdAnswersController().handle);
+router.get('/docIdAnswer', isAuthenticated, new LikesDocIdAnswersController().handle);
+
 
 
 export { router };
