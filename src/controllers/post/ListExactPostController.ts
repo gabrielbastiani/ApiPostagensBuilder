@@ -6,7 +6,7 @@ class ListExactPostController {
     async handle(req: Request, res: Response) {
         const { name } = req.query;
         const listExactPostService = new ListExactPostService();
-        const post = await listExactPostService.execute({ name });
+        const post = await listExactPostService.execute({ name: String(name) });
 
         return res.json(post);
     }

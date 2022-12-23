@@ -1,11 +1,7 @@
 import prismaClient from '../../prisma';
 
-interface PostRequest {
-    name: string;
-}
-
 class ListPostByUserService {
-    async execute({ name }: PostRequest) {
+    async execute({ name }) {
         const allPostUser = await prismaClient.post.findMany({
             where: {
                 name
