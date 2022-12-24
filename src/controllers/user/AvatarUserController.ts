@@ -3,11 +3,11 @@ import { AvatarUserService } from "../../services/user/AvatarUserService";
 
 class AvatarUserController {
    async handle(req: Request, res: Response){
-      const { user_id } = req.query;
+      const { name } = req.query;
       const findPhoto = new AvatarUserService();
 
       const find = await findPhoto.execute({
-         user_id
+         name
       });
 
       return res.json(find);

@@ -1,10 +1,10 @@
 import prismaClient from "../../prisma";
 
 class AvatarUserService {
-  async execute({user_id}){
+  async execute({name}){
     const user = await prismaClient.user.findUnique({
       where:{
-        id: user_id
+        name
       },
       select:{
         photo: true,
