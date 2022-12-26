@@ -12,7 +12,9 @@ class LikeAnswerService {
         id: String(postresponde_id),
       },
       data: {
-        like: like
+        like: {
+          increment: 1,
+        }
       }
     })
 

@@ -52,6 +52,7 @@ import { AllDocIdAnswersController } from './controllers/docLikesAnswers/AllDocI
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import uploadConfig from './config/multer';
+import { ListExactAnswerController } from './controllers/answer/ListExactAnswerController';
 const router = Router();
 const upload = multer(uploadConfig.upload("./images"));
 
@@ -96,12 +97,13 @@ router.put('/answerImg', isAuthenticated, upload.single('file'), new UpdateImgAn
 router.put('/likeMoreAnswer', isAuthenticated, new LikeAnswerController().handle);
 router.put('/deslikeAnswer', isAuthenticated, new DeslikeAnswerController().handle);
 router.get('/allAnswers', isAuthenticated, new AllAnswersController().handle);
+router.get('/exactAnswer', isAuthenticated, new ListExactAnswerController().handle);
 
 //LIKES ANSWERS
-router.post('/docIdAllAnswer', isAuthenticated, new AllDocIdAnswersController().handle);
+router.post('/docIdAnswer', isAuthenticated, new LikesDocIdAnswersController().handle);
 router.delete('/deleteDocAnswer', isAuthenticated, new DeleteLikesDocIdAnswersController().handle);
 router.get('/docIdFindAnswer', isAuthenticated, new FindUniqueDocIdAnswersController().handle);
-router.get('/docIdAnswer', isAuthenticated, new LikesDocIdAnswersController().handle);
+router.get('/docIdAllAnswer', isAuthenticated, new AllDocIdAnswersController().handle);
 
 
 

@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import { ListExactAnswerService } from '../../services/answer/ListExactAnswerService';
 
 
-class ListExactPostController {
+class ListExactAnswerController {
     async handle(req: Request, res: Response) {
-        const { answer } = req.query;
+        const { post_id } = req.query;
         const listExactAnswerService = new ListExactAnswerService();
-        const answers = await listExactAnswerService.execute({ answer });
+        const answers = await listExactAnswerService.execute({ post_id });
 
         return res.json(answers);
     }
 }
 
-export { ListExactPostController }
+export { ListExactAnswerController }

@@ -18,6 +18,11 @@ class CreateAnswerService {
             like: like,
             imgAnswer: imgAnswer,
             name: name
+         },
+         select: {
+            answer: true,
+            like: true,
+            imgAnswer: true,
          }
       })
 

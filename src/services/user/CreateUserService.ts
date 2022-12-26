@@ -73,7 +73,7 @@ class CreateUserService {
     });
 
     await transporter.sendMail({
-      from: "'Postagens - Builder Seu Negocio Online' <contato@builderseunegocioonline.com.br>",
+      from: "Postagens - Builder Seu Negocio Online <contato@builderseunegocioonline.com.br>",
       to: "gabriel.bastiani@hotmail.com.br",
       subject: "Novo usúario se cadastrando na Rede Social da Builder Seu Negócio Online",
       html: `<div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">

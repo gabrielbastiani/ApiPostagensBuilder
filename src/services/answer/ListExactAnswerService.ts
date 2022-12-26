@@ -2,10 +2,19 @@ import prismaClient from '../../prisma';
 
 
 class ListExactAnswerService {
-    async execute({ answer }) {
+    async execute({ post_id}) {
         const exactanswer = await prismaClient.postResponde.findUnique({
             where: {
-                answer
+                id: post_id
+            },
+            select: {
+                id: true,
+                answer: true,
+                imgAnswer: true,
+                like: true,
+                created_at: true,
+                name: true,
+                post_id: true
             }
         })
         return exactanswer;
