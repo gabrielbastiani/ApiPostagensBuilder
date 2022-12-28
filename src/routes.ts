@@ -53,6 +53,8 @@ import { AllDocIdAnswersController } from './controllers/docLikesAnswers/AllDocI
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import uploadConfig from './config/multer';
 import { ListExactAnswerController } from './controllers/answer/ListExactAnswerController';
+import { ListAllUserController } from './controllers/user/ListAllUserController';
+import { PageListPostController } from './controllers/post/PageListPostController';
 const router = Router();
 const upload = multer(uploadConfig.upload("./images"));
 
@@ -70,6 +72,7 @@ router.get('/userPhoto', isAuthenticated, new AvatarUserController().handle);
 router.post('/recover', new EmailPasswordController().handle);
 router.put('/recoverPassword', new RecoveryPasswordController().handle);
 router.put('/authenticated', new AuthenticatedEmailUserController().handle);
+router.get('/allUsers', isAuthenticated, new ListAllUserController().handle);
 
 //POST
 router.post('/post', isAuthenticated, upload.single('file'), new CreatePostController().handle);
@@ -81,6 +84,7 @@ router.put('/like', isAuthenticated, new LikePostController().handle);
 router.put('/deslike', isAuthenticated, new DeslikePostController().handle);
 router.get('/postsUser', isAuthenticated, new ListPostByUserController().handle);
 router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
+router.get('/pagePost', isAuthenticated, new PageListPostController().handle);
 
 //LIKES POSTS
 router.post('/docId', isAuthenticated, new LikesDocIdController().handle);

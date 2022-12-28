@@ -14,7 +14,7 @@ datasource db {
 
 model User {
   id       String  @id @default(uuid())
-  photo    String? @default("")
+  photo    String? @unique @default("")
   name     String  @unique @db.VarChar(75)
   email    String  @unique @db.VarChar(80)
   password String
@@ -25,7 +25,8 @@ model User {
   updatedAt  DateTime @updatedAt
 
   posts         Post[]
-  postrespondes PostResponde[]
+  postrespondes PostResponde[] @relation("Postrespondes")
+  pinnedPost    PostResponde?  @relation("PinnedPost")
 
   @@map("users")
 }
@@ -55,7 +56,7 @@ model Post {
 }
 
 model DocLikesPost {
-  docId   String @id @default("")
+  docId String @id @default("")
 
   user_id String?
   post_id String?
@@ -72,16 +73,18 @@ model PostResponde {
   created_at DateTime? @default(now())
   updatedAt  DateTime  @updatedAt
 
-  user    User?   @relation(fields: [name], references: [name])
-  name    String?
-  post    Post?   @relation(fields: [post_id], references: [id])
-  post_id String?
+  user      User?   @relation(name: "PinnedPost", fields: [name], references: [name])
+  name      String? @unique
+  userphoto User?   @relation("Postrespondes", fields: [photo], references: [photo])
+  photo     String?
+  post      Post?   @relation(fields: [post_id], references: [id])
+  post_id   String?
 
   @@map("postrespondes")
 }
 
 model DocLikesResponde {
-  docIdResponde   String @id @default("")
+  docIdResponde String @id @default("")
 
   user_id         String?
   postresponde_id String?
