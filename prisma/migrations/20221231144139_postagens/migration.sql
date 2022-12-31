@@ -51,6 +51,7 @@ CREATE TABLE "postrespondes" (
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT,
+    "photo" TEXT,
     "post_id" TEXT,
 
     CONSTRAINT "postrespondes_pkey" PRIMARY KEY ("id")

@@ -3,7 +3,7 @@ import { TextCreateAnswerService } from "../../services/answer/TextCreateAnswerS
 
 class TextCreateAnswerController {
    async handle(req: Request, res: Response) {
-      const { post_id, answer, like, name } = req.body;
+      const { post_id, answer, like, name, photo } = req.body;
 
       const textCreateAnswerService = new TextCreateAnswerService();
 
@@ -12,6 +12,7 @@ class TextCreateAnswerController {
          answer,
          like,
          name,
+         photo
       })
 
       return res.json(answersText)

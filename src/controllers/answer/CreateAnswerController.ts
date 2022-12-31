@@ -3,7 +3,7 @@ import { CreateAnswerService } from "../../services/answer/CreateAnswerService";
 
 class CreateAnswerController {
    async handle(req: Request, res: Response) {
-      const { post_id, answer, like, name } = req.body;
+      const { post_id, answer, like, name, photo } = req.body;
 
       const createAnswerService = new CreateAnswerService();
 
@@ -18,7 +18,8 @@ class CreateAnswerController {
          answer,
          like,
          name,
-         imgAnswer
+         imgAnswer,
+         photo
       })
 
       return res.json(answers)

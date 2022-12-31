@@ -6,10 +6,11 @@ interface PostRequest {
    like: number;
    imgAnswer: string;
    name: string;
+   photo: string;
 }
 
 class CreateAnswerService {
-   async execute({ post_id, answer, like, imgAnswer, name }: PostRequest) {
+   async execute({ post_id, answer, like, imgAnswer, name, photo }: PostRequest) {
 
       const answers = await prismaClient.postResponde.create({
          data: {
@@ -17,7 +18,8 @@ class CreateAnswerService {
             answer: answer,
             like: like,
             imgAnswer: imgAnswer,
-            name: name
+            name: name,
+            photo: photo,
          },
          select: {
             answer: true,

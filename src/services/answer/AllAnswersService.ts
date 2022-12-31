@@ -10,7 +10,8 @@ class AllAnswersService {
             like: true,
             name: true,
             post_id: true,
-            created_at: true
+            created_at: true,
+            photo: true,
          },
          orderBy: {
             created_at: 'desc'
