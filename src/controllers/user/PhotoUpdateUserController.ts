@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { PhotoUserUpdateService } from '../../services/user/PhotoUserUpdateService';
-import { RomovePhotoUserService } from "../../services/user/RemovePhotoUserService";
+import { RemovePhotoUserService } from "../../services/user/RemovePhotoUserService";
 import fs from 'fs';
 
 
@@ -8,7 +8,7 @@ class PhotoUpdateUserController {
   async handle(req: Request, res: Response) {
     const { user_id } = req.body;
 
-    const removePhotoUser = new RomovePhotoUserService();
+    const removePhotoUser = new RemovePhotoUserService();
     const updateUserService = new PhotoUserUpdateService();
 
     const photoUser = await removePhotoUser.execute({
