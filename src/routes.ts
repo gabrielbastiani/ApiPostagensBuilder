@@ -14,6 +14,8 @@ import { AvatarUserController } from './controllers/user/AvatarUserController';
 import { EmailPasswordController } from './controllers/user/PasswordRecovery/EmailPasswordController';
 import { RecoveryPasswordController } from './controllers/user/PasswordRecovery/RecoveryPasswordController';
 import { AuthenticatedEmailUserController } from './controllers/user/AuthenticatedEmailUserController';
+import { ListAllUserController } from './controllers/user/ListAllUserController';
+import { DeleteUserController } from './controllers/user/DeleteUserController';
 
 //POST
 import { CreatePostController } from './controllers/post/CreatePostController';
@@ -25,6 +27,8 @@ import { LikePostController } from './controllers/post/LikePostController';
 import { DeslikePostController } from './controllers/post/DeslikePostController';
 import { ListPostByUserController } from './controllers/post/ListPostByUserController';
 import { ListAllPostsController } from './controllers/post/ListAllPostsController';
+import { PageListPostController } from './controllers/post/PageListPostController';
+import { DeletePostController } from './controllers/post/DeletePostController';
 
 //LIKES POST
 import { LikesDocIdController } from './controllers/docLikes/LikesDocIdController';
@@ -41,6 +45,8 @@ import { UploadImgAnswerAnswerController } from './controllers/answer/UploadImgA
 import { LikeAnswerController } from './controllers/answer/LikeAnswerController';
 import { DeslikeAnswerController } from './controllers/answer/DeslikeAnswerController';
 import { AllAnswersController } from './controllers/answer/AllAnswersController';
+import { ListExactAnswerController } from './controllers/answer/ListExactAnswerController';
+import { DeleteAnswerController } from './controllers/answer/DeleteAnswerController';
 
 //LIKES ANSWER
 import { LikesDocIdAnswersController } from './controllers/docLikesAnswers/LikesDocIdAnswersController';
@@ -49,12 +55,9 @@ import { FindUniqueDocIdAnswersController } from './controllers/docLikesAnswers/
 import { AllDocIdAnswersController } from './controllers/docLikesAnswers/AllDocIdAnswersController';
 
 
-
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import uploadConfig from './config/multer';
-import { ListExactAnswerController } from './controllers/answer/ListExactAnswerController';
-import { ListAllUserController } from './controllers/user/ListAllUserController';
-import { PageListPostController } from './controllers/post/PageListPostController';
+
 const router = Router();
 const upload = multer(uploadConfig.upload("./images"));
 
@@ -73,6 +76,7 @@ router.post('/recover', new EmailPasswordController().handle);
 router.put('/recoverPassword', new RecoveryPasswordController().handle);
 router.put('/authenticated', new AuthenticatedEmailUserController().handle);
 router.get('/allUsers', isAuthenticated, new ListAllUserController().handle);
+router.delete('/deleteUser', isAuthenticated, new DeleteUserController().handle);
 
 //POST
 router.post('/post', isAuthenticated, upload.single('file'), new CreatePostController().handle);
@@ -85,6 +89,7 @@ router.put('/deslike', isAuthenticated, new DeslikePostController().handle);
 router.get('/postsUser', isAuthenticated, new ListPostByUserController().handle);
 router.get('/allPosts', isAuthenticated, new ListAllPostsController().handle);
 router.get('/pagePost', isAuthenticated, new PageListPostController().handle);
+router.delete('/deletePost', isAuthenticated, new DeletePostController().handle);
 
 //LIKES POSTS
 router.post('/docId', isAuthenticated, new LikesDocIdController().handle);
@@ -102,6 +107,7 @@ router.put('/likeMoreAnswer', isAuthenticated, new LikeAnswerController().handle
 router.put('/deslikeAnswer', isAuthenticated, new DeslikeAnswerController().handle);
 router.get('/allAnswers', isAuthenticated, new AllAnswersController().handle);
 router.get('/exactAnswer', isAuthenticated, new ListExactAnswerController().handle);
+router.delete('/deleteAnswer', isAuthenticated, new DeleteAnswerController().handle);
 
 //LIKES ANSWERS
 router.post('/docIdAnswer', isAuthenticated, new LikesDocIdAnswersController().handle);
