@@ -48,7 +48,7 @@ class RequestPasswordRecovery {
             <article>
                 <p>Olá, ${user.name}!</p>
                 <p>Voce esqueceu a sua senha?</p>
-                <p><a href="http://localhost:3000/recover?recovery_id=${recovery.id}">CLIQUE AQUI</a>, para crair uma nova senha de acesso.</p>
+                <p><a href="https://webapps.builderseunegocioonline.com.br/recover?recovery_id=${recovery.id}">CLIQUE AQUI</a>, para crair uma nova senha de acesso.</p>
                 <p>Você será redirecionado a uma página, onde poderá cadastrar uma nova senha com segurança!</p>
             </article>
             
